@@ -13,6 +13,7 @@
 ncclResult_t getHostName(char* hostname, int maxlen);
 uint64_t getHostHash();
 uint64_t getPidHash();
+uint64_t getTidHash();
 
 struct netIf {
   char prefix[64];

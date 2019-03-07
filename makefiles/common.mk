@@ -5,7 +5,7 @@
 #
 
 CUDA_HOME ?= /usr/local/cuda
-PREFIX ?= /usr/local
+PREFIX ?= /usr/local/cuda
 VERBOSE ?= 0
 KEEP ?= 0
 DEBUG ?= 0
@@ -44,7 +44,7 @@ endif
 
 CXXFLAGS   := -DCUDA_MAJOR=$(CUDA_MAJOR) -DCUDA_MINOR=$(CUDA_MINOR) -fPIC -fvisibility=hidden
 CXXFLAGS   += -Wall -Wno-sign-compare
-NVCUFLAGS  := -ccbin $(CXX) $(NVCC_GENCODE) -lineinfo -std=c++11 -Xptxas -maxrregcount=96 -Xfatbin -compress-all
+NVCUFLAGS  := -ccbin $(CXX) $(NVCC_GENCODE) --default-stream per-thread -lineinfo -std=c++11 -Xptxas -maxrregcount=96 -Xfatbin -compress-all
 # Use addprefix so that we can specify more than one path
 NVLDFLAGS  := -L${CUDA_LIB} -lcudart -lrt
 

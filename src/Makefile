@@ -102,9 +102,9 @@ clean :
 	$(MAKE) -C collectives/device clean
 
 install : lib
-	mkdir -p $(PREFIX)/lib
+	mkdir -p $(PREFIX)/lib64
 	mkdir -p $(PREFIX)/include
-	cp -P -v $(BUILDDIR)/lib/* $(PREFIX)/lib/
+	cp -P -v $(BUILDDIR)/lib/* $(PREFIX)/lib64/
 	cp -v $(BUILDDIR)/include/* $(PREFIX)/include/
 
 FILESTOFORMAT := $(shell find . -name ".\#*" -prune -o \( -name "*.cu" -o -name "*.h" \) -print | grep -v -E 'ibvwrap.h|nvmlwrap.h|nccl.h')

@@ -143,6 +143,20 @@ uint64_t getPidHash(void) {
   return getHash(pname);
 }
 
+uint64_t getTidHash(void) {
+  char pname[1024];
+  // Start off with our pid ($$)
+  sprintf(pname, "%ld", (long) gettid());
+  int plen = strlen(pname);
+  int len = readlink("/proc/self/ns/pid", pname+plen, sizeof(pname)-1-plen);
+  if (len < 0) len = 0;
+
+  pname[plen+len]='\0';
+  TRACE(NCCL_INIT,"unique PID '%s'", pname);
+
+  return getHash(pname);
+}
+
 int parseStringList(const char* string, struct netIf* ifList, int maxList) {
   if (!string) return 0;
 

@@ -7,7 +7,7 @@
 #ifndef NCCL_CORE_H_
 #define NCCL_CORE_H_
 
-#define NCCL_MAX_OPS 2048
+#define NCCL_MAX_OPS 1024
 #define NCCL_STEPS 8
 
 #include "nccl.h"
@@ -30,7 +30,7 @@ struct cudaLaunchParams {
 };
 #endif
 
-#define MAXCHANNELS 16
+#define MAXCHANNELS 8
 #define MAXTHREADS 256
 #define DEFAULT_BUFFER_SIZE_BYTES (1LL << 22) /* 4MiB */
 
